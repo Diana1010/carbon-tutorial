@@ -36,5 +36,6 @@ const TutorialHeader = () => (
     </HeaderGlobalAction>
     <HeaderGlobalBar />
   </Header>
+  // add table
 );
 export default TutorialHeader;
