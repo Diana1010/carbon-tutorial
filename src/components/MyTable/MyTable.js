@@ -1,5 +1,5 @@
-import { DataTable } from 'carbon-components-react';
-const {
+import React from 'react';
+import {
   TableContainer,
   Table,
   TableHead,
@@ -7,29 +7,13 @@ const {
   TableBody,
   TableCell,
   TableHeader,
-} = DataTable;
+} from 'carbon-components-react';
 
+/*
 const rows = [
-  {
-    id: 'a',
-    foo: 'Foo a',
-    bar: 'Bar a',
-    baz: 'Baz a',
-  },
-  {
-    id: 'b',
-    foo: 'Foo b',
-    bar: 'Bar b',
-    baz: 'Baz b',
-  },
-  {
-    id: 'c',
-    foo: 'Foo c',
-    bar: 'Bar c',
-    baz: 'Baz c',
-  },
+  "ID", "Name" , "Surname"
 ];
-
+*/
 // We would have a headers array like the following
 const headers = [
   {
@@ -48,38 +32,49 @@ const headers = [
   },
 ];
 
+const rows = [
+  {
+    id: 'a',
+    value: 'Field 1a',
+    cells: ['val1', 'val2', 'val7'],
+  },
+  {
+    id: 'b',
+    cells: ['val3', 'val4', 'val8'],
+  },
+  {
+    id: 'c',
+    cells: ['val5', 'val6', 'val9'],
+  },
+];
 
-const MyTable = () => (
-    
-      rows={rows}
-      headers={headers}
-    
-        <TableContainer title="DataTable">
-          <Table>
-            <TableHead>
-              <TableRow>
-                {headers.map(header => (
-                  <TableHeader {...getHeaderProps({ header })}>
-                    {header.header}
-                  </TableHeader>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.id}>
-                  {row.cells.map(cell => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
-                  ))}
-                </TableRow>
+function MyNewTable() {
+  return (
+    <TableContainer title="DataTable">
+      <Table>
+        <TableHead>
+          <TableRow>
+            {headers.map(header => (
+              <TableHeader>{header.header}</TableHeader>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={row.id}>
+              {row.cells.map(cell => (
+                <TableCell>{cell}</TableCell>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-    
-    
-)
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
 
+const MyTable = () => <MyNewTable />;
+
+export default MyTable;
 
 // Inside of your component's `render` method
-
