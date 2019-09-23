@@ -12,7 +12,7 @@ import {
 const headersMy = [
   {
     key: 'foo',
-    
+
     header: 'Foo',
   },
   {
@@ -66,8 +66,8 @@ function MyNewTable(props) {
   );
 }
 
-const MyTable = () => <MyNewTable title = "DataTable" headers = {headersMy} rows = {rowsMy}/>;
+const MyTable = () => (
+  <MyNewTable title="DataTable" headers={headersMy} rows={rowsMy} />
+);
 
 export default MyTable;
-
-// Inside of your component's `render` method
