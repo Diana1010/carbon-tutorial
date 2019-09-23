@@ -9,17 +9,10 @@ import {
   TableHeader,
 } from 'carbon-components-react';
 
-/*
-const rows = [
-  "ID", "Name" , "Surname"
-];
-*/
-// We would have a headers array like the following
-const headers = [
+const headersMy = [
   {
-    // `key` is the name of the field on the row object itself for the header
     key: 'foo',
-    // `header` will be the name you want rendered in the Table Header
+    
     header: 'Foo',
   },
   {
@@ -32,7 +25,7 @@ const headers = [
   },
 ];
 
-const rows = [
+const rowsMy = [
   {
     id: 'a',
     value: 'Field 1a',
@@ -48,19 +41,19 @@ const rows = [
   },
 ];
 
-function MyNewTable() {
+function MyNewTable(props) {
   return (
-    <TableContainer title="DataTable">
+    <TableContainer title={props.title}>
       <Table>
         <TableHead>
           <TableRow>
-            {headers.map(header => (
+            {props.headers.map(header => (
               <TableHeader>{header.header}</TableHeader>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {props.rows.map(row => (
             <TableRow key={row.id}>
               {row.cells.map(cell => (
                 <TableCell>{cell}</TableCell>
@@ -73,7 +66,7 @@ function MyNewTable() {
   );
 }
 
-const MyTable = () => <MyNewTable />;
+const MyTable = () => <MyNewTable title = "DataTable" headers = {headersMy} rows = {rowsMy}/>;
 
 export default MyTable;
 
