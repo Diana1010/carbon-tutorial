@@ -1,5 +1,7 @@
 import React from 'react';
+import DataTable from '../../components/DataTable';
 const LandingPage = () => {
-  return <div>LANDING PAGE</div>;
+  const element = (<><DataTable /> </>);
+  return element;
 };
 export default LandingPage;
