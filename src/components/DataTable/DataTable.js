@@ -74,6 +74,7 @@ function MyNewTable() {
     <DataTable
       rows={rows}
       headers={headers}
+      isSortable
       render={({ rows, headers, getHeaderProps, getRowProps, getTableProps }) => (
         <TableContainer title="DataTable with expansion">
           <Table {...getTableProps()}>
