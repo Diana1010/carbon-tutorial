@@ -75,6 +75,8 @@ function MyNewTable() {
       rows={rows}
       headers={headers}
       isSortable
+      useZebraStyles={false}
+      size={null}
       render={({ rows, headers, getHeaderProps, getRowProps, getTableProps }) => (
         <TableContainer title="DataTable with expansion">
           <Table {...getTableProps()}>
