@@ -8,6 +8,9 @@ const {
   TableBody,
   TableCell,
   TableHeader,
+  TableExpandHeader,
+  TableExpandRow,
+  TableExpandedRow,
 } = DataTable;
 
 // Given that we have the following rows with the fields `foo`, `bar`, and `baz`
@@ -18,6 +21,9 @@ const rows = [
     bar: 'Bar a',
     baz: 'Baz a',
     bac: 'Baz a',
+    
+    
+   
   },
   {
     id: 'b',
@@ -25,6 +31,8 @@ const rows = [
     bar: 'Bar b',
     baz: 'Baz b',
     bac: 'Baz a',
+
+    
   },
   {
     id: 'c',
@@ -32,6 +40,8 @@ const rows = [
     bar: 'Bar c',
     baz: 'Baz c',
     bac: 'Baz a',
+    
+      
   },
 ];
 
@@ -57,17 +67,19 @@ const headers = [
   },
 ];
 
+
 // Inside of your component's `render` method
 function MyNewTable() {
   return (
     <DataTable
       rows={rows}
       headers={headers}
-      render={({ headers, rows, getHeaderProps }) => (
-        <TableContainer title="DataTable">
-          <Table>
+      render={({ rows, headers, getHeaderProps, getRowProps, getTableProps }) => (
+        <TableContainer title="DataTable with expansion">
+          <Table {...getTableProps()}>
             <TableHead>
-              <TableRow>
+              <TableRow>               
+                <TableExpandHeader />
                 {headers.map(header => (
                   <TableHeader {...getHeaderProps({ header })}>
                     {header.header}
@@ -77,20 +89,30 @@ function MyNewTable() {
             </TableHead>
             <TableBody>
               {rows.map(row => (
-                <TableRow key={row.id}>
-                  {row.cells.map(cell => (
-                    <TableCell key={cell.id}>{cell.value}</TableCell>
-                  ))}
-                </TableRow>
+    
+                <React.Fragment key={row.id}>
+                  <TableExpandRow {...getRowProps({ row })}>
+                    {row.cells.map(cell => (
+                      <TableCell key={cell.id}>{cell.value}</TableCell>
+                    ))}
+                  </TableExpandRow>
+              
+                  {row.isExpanded && (
+                    <TableExpandedRow colSpan={headers.length + 1}>
+                      <h1>Expandable row content</h1>
+                      <p>Description here</p>
+                    </TableExpandedRow>
+                  )}
+                </React.Fragment>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       )}
-    />
+/>
   );
 }
 
-const NewTable = () => <MyNewTable />;
 
-export default NewTable;
+
+export default MyNewTable;
