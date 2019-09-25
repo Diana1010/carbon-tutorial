@@ -105,9 +105,12 @@ function MyNewTable() {
                       <h1>Expandable row content</h1>
                       <p>Description here</p>
                     </TableExpandedRow>
+                    
                   )}
+                 
                 </React.Fragment>
               ))}
+             
             </TableBody>
           </Table>
         </TableContainer>
