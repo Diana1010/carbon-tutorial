@@ -1,15 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'carbon-components-react';
 
-
-// Given that we have the following rows with the fields `foo`, `bar`, and `baz`
-
-
-// We would have a headers array like the following
-
-
-
-// Inside of your component's `render` method
 function MyDropdown() {
   return (
     <div style={{width: 300}}>
@@ -21,12 +12,8 @@ function MyDropdown() {
           helperText="This is not some helper text."
           invalid={false}
           invalidText="A valid value is required"
-          items={[
-           {id:'Hello'} 
-          ]}
-
-          itemToString={itemToString}
-          onChange={anonymous}
+          items={['Option 1','Option 2','Option 3']}
+         
         />
     </div>
   );
